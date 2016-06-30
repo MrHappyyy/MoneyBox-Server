@@ -1,10 +1,10 @@
 import client.Client;
-import server.ConnectClient;
+import server.Server;
 
 public class StartServer {
 
     public static void main(String[] args) {
-        new ConnectClient();
+        new Server();
         new Client();
     }
 }
