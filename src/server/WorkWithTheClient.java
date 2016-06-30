@@ -13,12 +13,34 @@ public class WorkWithTheClient extends Thread {
     public WorkWithTheClient(Socket socket) {
         this.socket = socket;
         dataExchange = new DataExchange(socket);
-        this.start();
+        if (authentication())
+            this.start();
     }
 
     @Override
     public void run() {
         super.run();
 
+    }
+
+    private boolean authentication() {
+        while (true) {
+            switch (dataExchange.acceptString()) {
+                case "exit":
+                    return false;
+                case "registration":
+                    if (registration())
+                        return true;
+                    else
+                        return false;
+                case "entrance":
+
+            }
+        }
+    }
+
+    private boolean registration() {
+
+        return false;
     }
 }

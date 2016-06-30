@@ -1,5 +1,6 @@
 package server;
 
+import db.ClientDAO;
 import db.DataBase;
 
 import java.io.*;
@@ -9,10 +10,12 @@ public class Server extends Thread {
     public static final int PORT = 4325;
     private static ServerSocket server;
     protected static DataBase db;
+    protected static ClientDAO clientDAO;
 
     public Server() {
         if (createServer()) {
             db = new DataBase();
+            clientDAO = new ClientDAO(db.getConnection());
             this.start();
         }
     }
