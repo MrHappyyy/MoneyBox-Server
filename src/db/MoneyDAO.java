@@ -3,12 +3,13 @@ package db;
 import java.sql.Connection;
 import java.util.List;
 
-public class MoneyDAO implements DAO {
+public class MoneyDAO implements DAO1<MoneyEntity> {
 
     public MoneyDAO(Connection connection) {
 
     }
 
+    @Override
     public boolean createTable(String nameTable) {
         return false;
     }
@@ -19,7 +20,7 @@ public class MoneyDAO implements DAO {
     }
 
     @Override
-    public boolean add() {
+    public boolean add(MoneyEntity moneyEntity) {
         return false;
     }
 }

@@ -3,7 +3,7 @@ package db;
 import java.sql.Connection;
 import java.util.List;
 
-public class StatisticDAO implements DAO {
+public class StatisticDAO implements DAO1<StatisticEntity> {
 
     public StatisticDAO(Connection connection) {
 
@@ -19,7 +19,7 @@ public class StatisticDAO implements DAO {
     }
 
     @Override
-    public boolean add() {
+    public boolean add(StatisticEntity entity) {
         return false;
     }
 }
