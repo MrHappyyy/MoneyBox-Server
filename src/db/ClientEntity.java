@@ -5,6 +5,11 @@ public class ClientEntity {
     private String name;
     private String password;
 
+    public ClientEntity(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     public ClientEntity(int id, String name, String password) {
         this.id = id;
         this.name = name;
