@@ -37,4 +37,9 @@ public class TaskDAO implements DAO2<TaskEntity> {
     public boolean delete(int id) {
         return false;
     }
+
+    @Override
+    public boolean update(int id, TaskEntity taskEntity) {
+        return false;
+    }
 }

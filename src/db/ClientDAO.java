@@ -27,8 +27,8 @@ public class ClientDAO implements DAO2<ClientEntity> {
             statement.close();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Не удалось создать таблицу " + TABLE_NAME);
+            //e.printStackTrace();
+            System.err.println("Не удалось создать таблицу " + TABLE_NAME + "...");
             return false;
         }
     }
@@ -49,8 +49,8 @@ public class ClientDAO implements DAO2<ClientEntity> {
             res.close();
             return clients;
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Не удалось получить всех клиентов с таблицы " + TABLE_NAME);
+            //e.printStackTrace();
+            System.err.println("Не удалось получить всех клиентов с таблицы..." + TABLE_NAME);
             return null;
         }
     }
@@ -67,8 +67,8 @@ public class ClientDAO implements DAO2<ClientEntity> {
             statement.close();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Не удалось добавить нового клиента в таблицу");
+            //e.printStackTrace();
+            System.err.println("Не удалось добавить нового клиента в таблицу...");
             return false;
         }
     }
@@ -84,8 +84,8 @@ public class ClientDAO implements DAO2<ClientEntity> {
             res.close();
             return entity;
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Не удалось получить клиента по id");
+            //e.printStackTrace();
+            System.err.println("Не удалось получить клиента по id...");
             return null;
         }
     }
@@ -101,8 +101,26 @@ public class ClientDAO implements DAO2<ClientEntity> {
             res.close();
             return entity;
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Не удалось получить клиента по имени");
+            //e.printStackTrace();
+            //System.out.println(e.getMessage());
+            System.err.println("Не удалось получить клиента по имени...");
+            return null;
+        }
+    }
+
+    public ClientEntity getByPass(String pass) {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet res = statement.executeQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + PASSWORD_COLUMN + " = '" + pass + "'");
+            ClientEntity entity = new ClientEntity(res.getInt(ID_COLUMN), res.getString(NAME_COLUMN),
+                    res.getString(PASSWORD_COLUMN));
+            statement.close();
+            res.close();
+            return entity;
+        } catch (SQLException e) {
+            //e.printStackTrace();
+            //System.out.println(e.getMessage());
+            System.err.println("Не удалось получить клиента по паролю...");
             return null;
         }
     }
@@ -116,8 +134,8 @@ public class ClientDAO implements DAO2<ClientEntity> {
             statement.close();
             return true;
         } catch (SQLException e) {
-            System.out.println("Не удалось удалить c таблицы клиента по id");
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Не удалось удалить c таблицы клиента по id...");
             return false;
         }
     }
@@ -132,8 +150,8 @@ public class ClientDAO implements DAO2<ClientEntity> {
             statement.close();
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Не удалось внести изменения в клиенте по id");
+            //e.printStackTrace();
+            System.err.println("Не удалось внести изменения в клиенте по id...");
             return false;
         }
     }

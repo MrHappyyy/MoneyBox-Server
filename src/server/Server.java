@@ -9,8 +9,8 @@ import java.net.*;
 public class Server extends Thread {
     public static final int PORT = 4325;
     private static ServerSocket server;
-    protected static DataBase db;
-    protected static ClientDAO clientDAO;
+    private static DataBase db;
+    private static ClientDAO clientDAO;
 
     public Server() {
         if (createServer()) {
@@ -31,7 +31,7 @@ public class Server extends Thread {
         //while (true) {
             try {
                 Socket socket = server.accept();
-                new WorkWithTheClient(socket);
+                new WorkWithTheClient(socket, clientDAO);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.err.println("Не удалось соединиться с клиентом");
